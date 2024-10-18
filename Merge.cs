@@ -11,67 +11,73 @@ namespace Sorteringsalgoritmer
     {
         public void Sort(int[] unsortedArray)
         {
-            ArrayUtil.Shuffle(unsortedArray);
+            if(unsortedArray.Length < 2)
+            {
+                return;
+            }
+
+            Split(unsortedArray);
 
         }
 
         public void Split(int[] unsortedArray)
         {
-            int maxIndex = unsortedArray.Length - 1;
-            if(maxIndex%2 == 0)
+            int length = unsortedArray.Length;
+
+            if (length == 2)
             {
-                int halfIndex = maxIndex / 2;
-                int[] leftHalf = new int[halfIndex];
-                int[] rightHalf = new int[halfIndex];
-                for(int i = 0; i < halfIndex; i++)
-                {
-                    leftHalf[i] = unsortedArray[i];
-                }
-                if(leftHalf.Length > 2)
-                {
-                    Split(leftHalf);
-                }
-                else
-                {
-                    if (leftHalf[0] > leftHalf[1])
-                    {
-                        int temp = leftHalf[0];
-                        leftHalf[0] = leftHalf[1];
-                        leftHalf[1] = temp;
-                    }
-                }
-                if (rightHalf.Length > 2)
-                {
-                    Split(rightHalf);
-                }
-                else
-                {
-                    if (rightHalf[0] > rightHalf[1])
-                    {
-                        int temp = rightHalf[0];
-                        rightHalf[0] = rightHalf[1];
-                        rightHalf[1] = temp;
-                    }
-                }
-                Combine(leftHalf, rightHalf);
+                return unsortedArray;
             }
+
+            int halfIndex = length / 2;
+            int[] leftHalf = new int[halfIndex];
+            int[] rightHalf = new int[length - halfIndex];
+
+            for(int i = 0; i < halfIndex; i++)
+            {
+                leftHalf[i] = unsortedArray[i];
+            }
+                
+            for (int i = halfIndex; i < length; i++)
+            {
+                int temp = i - halfIndex;
+                rightHalf[temp] = unsortedArray[i];
+            }
+            Split(rightHalf);
+            Split(leftHalf);
+
+            Combine(unsortedArray, leftHalf, rightHalf);
+            
         }
 
-        public int[] Combine(int[] leftHalf, int[] rightHalf)
+        public void Combine(int[] unsortedArray, int[] leftHalf, int[] rightHalf)
         {
-            int sortedArrayMaxIndex = leftHalf.Length + rightHalf.Length - 2;
-            int sortedArrayLeftIndex = leftHalf.Length - 1;
-            int sortedArrayRightIndex = rightHalf.Length - 1;
+            int leftLength = leftHalf.Length;
+            int rightLength = rightHalf.Length;
 
-            int[] sortedArray = new int[sortedArrayMaxIndex];
+            int i = 0; int j = 0; int k = 0;
 
-            for (int i = 0; i < sortedArrayLeftIndex; i++)
+            while (i < leftLength && j < rightLength)
             {
-                sortedArray[i] = leftHalf[i];
-                sortedArray[i + sortedArrayLeftIndex] = rightHalf[i];
+                if (leftHalf[i] <= rightHalf[j])
+                {
+                    unsortedArray[k++] = leftHalf[i++];
+                }
+                else 
+                {
+                    unsortedArray[k++] = rightHalf[j++];
+                }
             }
 
-            return sortedArray;
+            while(i < leftLength)
+            {
+                unsortedArray[k++] = leftHalf[i++];
+            }
+
+            while(j < rightLength)
+            {
+                unsortedArray[k++] = rightHalf[j++];
+            }
         }
     }   
 

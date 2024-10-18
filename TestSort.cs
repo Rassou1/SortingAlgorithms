@@ -45,8 +45,8 @@ namespace Sorteringsalgoritmer
 
         public static void Main()
         {
-            IntSorter sorter = new Quicksort();
-
+            IntSorter sorter = new Merge();
+            
             int firstN = 10000;
 
             Console.WriteLine("Unordered:");
