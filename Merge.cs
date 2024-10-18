@@ -24,9 +24,9 @@ namespace Sorteringsalgoritmer
         {
             int length = unsortedArray.Length;
 
-            if (length == 2)
+            if (length <= 1)
             {
-                return unsortedArray;
+                return;
             }
 
             int halfIndex = length / 2;
