@@ -22,7 +22,7 @@ namespace Sorteringsalgoritmer
             double t1 = 0;
             int N = firstN / 2;
 
-            while (t1 < 0.7 && N < 500000)
+            while (/*t1 < 0.7 &&*/ N < 5000000)
             {
                 N *= 2;
                 int[] a = create(N, ordered);
@@ -45,7 +45,10 @@ namespace Sorteringsalgoritmer
 
         public static void Main()
         {
-            IntSorter sorter = new Merge();
+            //IntSorter sorter = new QuickSortWInsertion();
+            IntSorter sorter = new MergeSortWInsertion();
+            //IntSorter sorter = new Merge();
+             //IntSorter sorter = new Quicksort();
             
             int firstN = 10000;
 
