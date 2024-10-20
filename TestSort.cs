@@ -1,4 +1,5 @@
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Sorteringsalgoritmer
 {
     public class TestSort
@@ -22,7 +23,7 @@ namespace Sorteringsalgoritmer
             double t1 = 0;
             int N = firstN / 2;
 
-            while (/*t1 < 0.7 &&*/ N < 5000000)
+            while (/*t1 < 0.7 &&*/ N < 50000000)
             {
                 N *= 2;
                 int[] a = create(N, ordered);
@@ -45,11 +46,12 @@ namespace Sorteringsalgoritmer
 
         public static void Main()
         {
-            //IntSorter sorter = new QuickSortWInsertion();
-            IntSorter sorter = new MergeSortWInsertion();
+             //IntSorter sorter = new QuickSortWInsertion();
+           // IntSorter sorter = new MergeSortWInsertion();
+            TheThirdOne sorter = new TheThirdOne();
             //IntSorter sorter = new Merge();
-             //IntSorter sorter = new Quicksort();
-            
+            // IntSorter sorter = new Quicksort();
+
             int firstN = 10000;
 
             Console.WriteLine("Unordered:");

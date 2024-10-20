@@ -10,7 +10,7 @@ namespace Sorteringsalgoritmer
     public class MergeSortWInsertion : IntSorter
     {
         InsertionSorter sorter = new InsertionSorter();
-        public int m = 10;  // the cutoff value from when the merge sort should switch to an insertion sort
+        public int m = 20;  // the cutoff value from when the merge sort should switch to an insertion sort
         public void Sort(int[] unsortedArray)
         {
             if (unsortedArray.Length < 2)

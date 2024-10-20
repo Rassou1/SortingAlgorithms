@@ -8,7 +8,7 @@ namespace Sorteringsalgoritmer
 {
     internal class QuickSortWInsertion: IntSorter
     {
-        int m = 10;
+        int m = 20;
         public void Sort(int[] unsortedArray)
         {
             ArrayUtil.Shuffle(unsortedArray);
