@@ -27,6 +27,7 @@ namespace Sorteringsalgoritmer
                     d[i] = 1;
                 }
 
+            }
                 int index = 0;
 
                 foreach (var keyValuePair in d)
@@ -41,7 +42,7 @@ namespace Sorteringsalgoritmer
 
                 }
 
-            }
+            
         }
     }
 }

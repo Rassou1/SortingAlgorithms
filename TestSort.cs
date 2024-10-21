@@ -23,7 +23,7 @@ namespace Sorteringsalgoritmer
             double t1 = 0;
             int N = firstN / 2;
 
-            while (/*t1 < 0.7 &&*/ N < 50000000)
+            while (t1 < 0.7 && N < 500000)
             {
                 N *= 2;
                 int[] a = create(N, ordered);
